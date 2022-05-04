@@ -1,0 +1,633 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}"> -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title></title>
+    <style type="text/css">
+      @font-face {
+        font-family: msgothic;
+        font-style: normal;
+        font-weight: normal;
+        src: url("{{ storage_path ('fonts/msgothic.ttf') }}") format('truetype');
+      }
+      body {
+        font-family: msgothic;
+        font-size: 12px;
+        margin: 0px !important;
+        padding: 0px !important;
+        background: #fff;
+        /*line-height: normal !important;*/
+      }
+      .wrapper-content {
+          width: 795px; 
+          margin: 0 auto;
+          background: white;
+          /*padding: 37.79px 37.79px 37.79px 56.69px;*/
+          /*padding: 22mm 25mm;*/
+          font-size: 10px;
+          position: relative;
+      }
+
+      .pdf-logo{
+        position: relative;
+        height: 55px;
+      }
+
+      .pdf-img-stamp{
+        position: absolute;
+        left: 180px;
+        top: -16px;
+      }
+
+      .clearfix{
+        display: block;
+        content: "";
+        clear: both;
+      }
+
+      table thead tr td{
+        text-align: center;
+      }
+
+      .pdf-data-table tbody tr:nth-child(odd) td{
+        background-color: #D9E1F1;
+      }
+
+      .pdf-data-table tbody tr:nth-child(even) td:last-child{
+        border-right: none;
+      }
+
+        @media print {
+          * {
+            background: transparent !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            margin: 0;
+            padding: 0;
+            line-height: normal !important;
+            /* font-size: 8px !important; */
+          }
+
+          body {
+            padding: 0;
+          }
+        }
+
+      @page {
+        size: A4;
+      }
+
+      header {
+        position: fixed;
+        height: 1px;
+        width: 20px;
+        background: #000;
+        left: -30px;
+        top: 104mm;
+      }
+
+      footer { 
+        height: 1px;
+        width: 20px;
+        background: #000;
+        position: fixed;
+        right: -30px;
+        top: 104mm;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <footer></footer>
+    <main>
+      <div class="wrapper-body">
+        <div class="wrapper-content">
+          <!-- <div class="left-line"></div>
+          <div class="right-line"></div> -->
+
+          <div style="width: 100%;margin-top:1mm;margin-bottom:5px;">
+            <div style="width: 87.7mm;margin-left:11.3mm;float: left;margin-right: 50px;font-size: 13px;word-wrap: break-word;line-height: 1.1;">
+              <div>999-9999</div>
+              <div>ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５</div>
+              <div>ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５</div>
+              <div>ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５</div>
+              <div>ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５</div>
+              <div>ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５ＮＮＮＮ０ＮＮＮＮ５</div>
+              <div  style="font-size: 10px;">お客様コード　99999999999</div>
+            </div>
+            <div style="float: left;">
+              <div style="margin-top: 6px;margin-bottom:20px;font-size: 18px;border-bottom: 2pt double black;">
+                請　求　書
+              </div>
+              <div>
+                <div class="pdf-logo">
+                  <!-- <img src="img/logo.jpg" height="36px">
+                  <img class="pdf-img-stamp" src="img/stamp.png" width="85px"> -->
+                  <img src="{{resource_path() . '/views/sales/salesSlip/voucherCreation/img/logo.jpg'}}" height="36px">
+                  <img class="pdf-img-stamp" src="{{resource_path() . '/views/sales/salesSlip/voucherCreation/img/stamp.png'}}" width="60px">
+                </div>
+                 <div class="clearfix"></div>
+              </div>
+              <div style="margin-top:-10px;">
+                <div style="font-size: 10px;"><!-- margin-left: 116mm -->
+                  <div>登録番号 T7120001091573</div>
+                  <div>大阪本社 〒541-0048 大阪市中央区瓦町1-6-10</div>
+                  <div style="margin-left:28px;">経理部 TEL 06-6228-1384 FAX 06-6228-1380</div>
+                  <div>東京本社 〒103-0015 東京都中央区日本橋箱崎町4-3</div>
+                  <div style="margin-left:28px;">経理部 TEL 03-6661-1210 FAX 03-5643-0909</div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div style="width: 100%;margin-top:20px;">
+            <div style="width: 53%;float: left; margin-right: 9%;font-size: 10px;margin-top:30px;">
+              <table style="width: 200px;">
+                <tbody>
+                <tr>
+                    <td style="width: 65px;">&nbsp;</td>
+                    <td>&nbsp;　</td>
+                  </tr>
+                  <tr>
+                    <td style="width: 65px;padding-right: 5px;">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td style="border-bottom: 1px solid #000;width: 65px;">発行年月日</td>
+                    <td style="border-bottom: 1px solid #000;">　2019/06/20</td>
+                  </tr>
+                  <tr>
+                    <td style="border-bottom: 1px solid #000;width: 65px;padding-right: 5px;">請求書番号</td>
+                    <td style="border-bottom: 1px solid #000;">49071070</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="clearfix"></div>
+            </div>
+
+            <div style="width: 38%;float: left;margin-top: 20px; margin-bottom: 0px;font-size: 9.5px;">
+              <div><!-- style="float: right;" -->
+                <table style="width: 100%;">
+                  <tbody>
+                    <tr>
+                      <td style="padding-right: 5px;">取引銀行</td>
+                      <td style="padding-right: 5px;">三井住友銀行</td>
+                      <td style="padding-right: 5px;">御堂筋支店</td>
+                      <td >当座6661280</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>りそな銀行</td>
+                      <td>船場支店</td>
+                      <td>当座1274350</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>三菱UFJ銀行</td>
+                      <td>船場中央支店</td>
+                      <td>当座1126963</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td>みずほ銀行</td>
+                      <td> 船場支店</td>
+                      <td>当座0035398</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+               
+               <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+
+           <!-- top content start -->
+           <div style="width: 100%;margin-top: 5px;margin-bottom:10px;">
+            <div style="width: 75%; float: left;margin-right:5%; ">
+            <table class="pdf-data-table" style="border-spacing: 0px;width: 100%;font-size: 10px;border-top: .5px solid #000;border-left: .5px solid #000;border-bottom: .5px solid #000;border-right: .5px solid #000;line-height: 1.1;float:left;">
+              <thead style="background: #D9E1F1; width: 100%;">
+                <tr>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;vertical-align: middle;text-align: center;">前回御請求額</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;vertical-align: middle;text-align: center;"> 今回御入金額</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;vertical-align: middle;text-align: center;text-align: center;"> 繰　越　額</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;vertical-align: middle;line-height: 20px;text-align: center;">今回御買上額/td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;vertical-align: middle;text-align: center;"> 今回消費税額</td>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background-color: #fff;">
+                  <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;background: #fff;">2,231,050</td>
+                  <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;background: #fff;">1,073,450</td>
+                  <td style="border-right: 1px solid #000;padding:1px;font-size: 13px;white-space: nowrap;overflow: hidden;background: #fff;"> 1,157,600</td>
+                  <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;background: #fff;">999,999,999</td>
+                  <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;background: #fff;"> 999,999</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+            <div class="clearfix"></div>
+            </div>
+            
+            <div style="width: 20%; margin-left:80%;">
+            <table class="pdf-data-table" style="border-spacing: 0px;width: 100%;font-size: 10px;border-top: .5px solid #000;border-left: .5px solid #000;border-bottom: .5px solid #000;border-right: .5px solid #000;line-height: 1.3;float:left;">
+              <thead style="background: #D9E1F1; width: 100%;">
+                <tr>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 3px; vertical-align: middle;text-align: center;">今回御請求額</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background-color: #fff;">
+                  <td style="border-right: 1px solid #000;padding:3px; word-wrap: break-word;text-align: right;background: #fff;">2,191,604</td>
+                </tr>
+              </tbody>
+            </table>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+           </div>
+           <!-- top content end -->
+
+          <!-- content 1 -->
+          <div style="width: 100%;margin-top: 5px; float:left;">
+            <table class="pdf-data-table" style="border-spacing: 0px;width: 100%;font-size: 10px;border-top: .5px solid #000;border-left: .5px solid #000;border-bottom: .5px solid #000;border-right: .5px solid #000;line-height: 1.1;table-layout:fixed">
+              <thead style="background: #D9E1F1; width: 100%;">
+                <tr>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 10%;vertical-align: top;">売上日</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 10%;vertical-align: top;">伝票番号</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 5%;vertical-align: top;text-align: center;">区分</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 35%;vertical-align: top;line-height: 20px;">商　品　名</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 5%;vertical-align: top;">数量</td>
+                  <td style="border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 5%;vertical-align: top;">単位</td>
+                  <td style="border-top:1px solid #000;border-right: 1px solid #000; padding: 0;width: 10%;font-size: 8px;vertical-align: top;">摘 要</td>
+                  <td style="border-top:1px solid #000;border-right: 1px solid #000; padding: 0;width: 10%;font-size: 8px;vertical-align: top;">摘 要</td>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 1 -->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">yyyy/mm/dd</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">9999999991</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;">売上</td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">Autoﾒｰﾙ名人 基本ﾊﾟｯｹｰｼﾞ 開発版1年ﾗｲｾﾝ...</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">99,999,999</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 99,999,999</td>
+
+                  </tr>
+                  <!-- 2 -->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">Autoﾒｰﾙ名人 取引先ｸﾗｲｱﾝﾄ</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">99,999,999</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 99,999,999</td>
+                  </tr>
+                    <!-- 3 -->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">ｲﾝｽﾄｰﾙ</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">99,999,999</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 99,999,999</td>
+                  </tr>
+                  <!-- 4-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">操作指導</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">99,999,999</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 99,999,999</td>
+                  </tr>
+                    <!-- 5-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">伝票備考123456伝票備考123456伝票備考123456伝票備考XXXXXXXXXXXXXXXXXX... </td>
+                    
+                  </tr>
+                  <!-- 6-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">消費税額</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 99,999,999</td>
+                  </tr>
+                  <!-- 7-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">yyyy/mm/dd</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 9999999992</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;">売上</td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">Autoﾒｰﾙ名人06.0.0 1年ﾗｲｾﾝｽ 月額保守料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">8,800</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 8,800</td>
+                  </tr>
+                   <!-- 8-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">伝票備考123456伝票備考123456伝票備考123456伝票備考XXXXXXXXXXXXXXXXXX... </td>
+                    
+                  </tr>
+                  <!-- 9 -->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">消費税額</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 99,999,999</td>
+                  </tr>
+                  <!-- 10 -->
+                   <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">yyyy/mm/dd</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">9999999993</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;">売上</td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">ﾍﾟｰｼﾞﾌﾟﾘﾝﾀXL-9440E</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">157,000</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 157,000</td>
+                  </tr>
+                  <!-- 11-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">消費税額</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 99,999,999</td>
+                  </tr>
+                  <!-- 12-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">yyyy/mm/dd</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">9999999994</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;">売上</td>
+                    <td  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">ｼｽﾃﾑｴﾝｼﾞﾆｱｻﾎﾟｰﾄ料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"><div> <span style="margin-right:5px;"> ※</span> <span> 10,000</span>  </div></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">  10,000</td>
+                  </tr>
+                  <!-- 13-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">明細備考123456明細備考123456明細備考123456明細備考XXXXXXXXXXXXXXXXXX... </td>
+                  </tr>
+                  <!-- 14-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">ﾈｯﾄﾜｰｸ機器保守料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000; padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"><div> <span style="margin-right:5px;"> ※</span> <span> 1,900</span>  </div></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 1,900</td>
+                  </tr>
+                  <!-- 15-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">明細備考123456明細備考123456明細備考123456明細備考XXXXXXXXXXXXXXXXXX...</td>
+                  </tr>
+                  <!-- 16-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="2" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">（最終顧客を印字する最終顧客を印字する　様分）</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                  </tr>
+                  <!-- 17-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">yyyy/mm/dd</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;">9999999991</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;">売上</td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">伝票備考123456伝票備考123456伝票備考123456伝票備考XXXXXXXXXXXXXXXXXX....</td>
+                  </tr>
+                  <!-- 18-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">消費税額</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"> 999,999,999</td>
+                  </tr>
+                  <!-- 19-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">ﾎｰﾑﾍﾟｰｼﾞ保守料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"><div> <span style="margin-right:5px;"> ※</span> <span> 18,300</span>  </div></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 18,300</td>
+                  </tr>
+                  <!-- 20-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">NETGROBE9000Ⅲ 保守料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">32,875</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 32,875</td>
+                  </tr>
+                  <!-- 21-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">MJSLINK NX-1 財務対象 保守料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"><div> <span style="margin-right:5px;"> ※</span> <span> 18,200</span>  </div></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 18,200</td>
+                  </tr>
+                  <!-- 22-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5"  style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">明細備考123456明細備考123456明細備考123456明細備考XXXXXXXXXXXXXXXXXX...</td>
+                  </tr>
+                  <!-- 23-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">FAXお助け名人 保守料</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">1</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"><div> <span style="margin-right:5px;"> ※</span> <span> 18,500</span>  </div></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">  18,200</td>
+                  </tr>
+                  <!-- 24-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">明細備考123456明細備考123456明細備考123456明細備考XXXXXXXXXXXXXXXXXX...</td>
+                  </tr>
+                  <!-- 25-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="5" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">明細備考123456明細備考123456明細備考123456明細備考XXXXXXXXXXXXXXXXXX...</td>
+                  </tr>
+                  <!-- 26-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td colspan="2" style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;">（最終顧客を印字する最終顧客を印字する　様分）</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                  </tr>
+                  <!-- 27-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;">消費税額</td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;"> 99,999,999</td>
+                  </tr>
+                  <!-- 28-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;text-align: right;"></td>
+                  </tr>
+                  <!-- 29-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;text-align: right;"></td>
+                  </tr>
+                  <!-- 30-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;text-align: right;"></td>
+                  </tr>
+                   <!-- 31-->
+                  <tr>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: center;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding: 0;word-wrap: break-word;font-size: 10px;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;text-align: right;height: 6mm;"></td>
+                    <td style="border-right: 1px solid #000;padding:1px;word-wrap: break-word;height: 6mm;text-align: right;"></td>
+                  </tr>
+           
+              </tbody>
+            </table>
+            <div style="margin-top: -1px;">
+            <!-- <div style="page-break-after: always;"> -->
+              <table style="border-spacing: 0px;width: 100%;font-size: 9px;border-top: .5px solid #000;border-left: .5px solid #000;border-bottom: .5px solid #000;border-right: .5px solid #000;">
+                <tbody>
+                  <tr>
+                    <td rowspan="4" style="border-right: 1px solid #000;width: 79%;position: relative;vertical-align: top;padding: 0 3px;">
+                      <div class="" style="position: absolute;top: 1px;font-size: 7px;width: 100%;">
+                        <div style="float: right;">
+                          <span style="margin-right: 0px;">□</span>
+                          <span>◎</span>
+                        </div>
+                      </div>
+
+                      <div class="" style="margin-right: 10px;margin-top: 1px;width: 100%;">
+                        <span style="font-size: 10px;">摘要 <br/>
+                        <span style="font-size: 11px;margin-right:5px;">ページ：</span> <span style="font-size: 11px;">（1／999）</span><br/> <br/>
+                        <span style="font-size: 11px;">（※ は軽減税率である事を示します）</span><br/>
+                        <span style="font-size: 11px;">上記の通り御請求申し上げます。</span> <br/>
+                        <span style="font-size: 10px;">なお御不審の点がございましたら早速御連絡頂きたく存じます。</span> <br/>
+                        <span style="font-size: 10px;">当請求書と行き違いにお支払いを頂きました際は悪しからずご了承下さい。</span>
+                      </div>
+                    </td>
+                    <td style="background: #D9E1F1;border-right: 1px solid #000;width: 10%;text-align: center;padding: 0 3px;">合計（税込）</td>
+                    <td style="background: #D9E1F1;width: 10%;text-align: right;padding: 0 3px;">9,999,999,999</td>
+                  </tr>
+                  <tr>
+                    <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;text-align: center;padding: 0 3px;">合 計 <br/>消 費 税</td>
+                    <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;text-align: right;padding: 0 3px;">2,191,604<br/>444,444</td>
+                  </tr>
+                  <tr>
+                    <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;text-align: center;padding: 0 3px;">1 0 % 対 象<br/>消 費 税</td>
+                    <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;text-align: right;padding: 0 3px;"> 999,555,555<br/>444,444</td>
+                  </tr>
+                  <tr>
+                    <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;text-align: center;padding: 0 3px;">8 % 対 象<br/>消 費 税</td>
+                    <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;text-align: right;padding: 0 3px;"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

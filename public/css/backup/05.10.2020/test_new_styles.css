@@ -1,0 +1,164 @@
+.container {
+  max-width: 1140px !important;
+}
+
+.line-icon-box{
+	height: 14px;
+    width: 14px;
+    background: #363A81;
+    border-radius: 3px;
+    float: left;
+  	margin-right: 10px;
+}
+
+.line-icon-box-g {
+  height: 14px;
+  width: 14px;
+  background: #BBBBBB;
+  border-radius: 3px;
+  float: left;
+  margin-right: 10px;
+}
+
+.td-border-line:after {
+  content: '';
+  position: absolute;
+  background: #D0D0D0;
+  width: 1px;
+  height: 26px;
+  left: 15px;
+  top: 3px;
+}
+
+select:focus::-ms-value {
+  background: transparent !important;
+}
+
+/*======Table form and select col bg Start======*/
+.table-fill th span {
+  height: 22px !important;
+  line-height: 12px;
+  border-radius: 4px;
+}
+
+.table-fill.table tbody tr td input {
+  border: 1px solid lightgray !important;
+  /* border: 1px solid #e1e1e1 !important; */
+  border-radius: 4px !important;
+}
+
+.table-fill.table tbody tr td {
+  background: white;
+  border: 1px solid lightgray !important;
+  /* border: 1px solid #E1E1E1 !important; */
+}
+
+.highlight{
+  position: relative;
+}
+
+.highlight:before {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #388BF5;
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.highlight span{
+  background: #388BF5 !important;
+  border: 2px solid #388BF5 !important;
+}
+
+.tdhighlight{
+  background: #E2ECF5 !important;
+}
+/*====== Table form and select col bg end ======*/
+
+/*====== Radio button new design start ======*/
+.radio-rounded .custom-radio .custom-control-input:checked ~ .custom-control-label:before,
+.radio-rounded .custom-radio .custom-control-input:checked ~ .custom-control-label:after {
+    background: #3F8CED !important;
+    box-shadow: none;
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    color: #fff;
+    font-size: 10px;
+    font-weight: normal!important;
+    top: 2px;
+    text-align: center;
+    border: 1px solid #3F8CED !important;
+}
+
+.radio-rounded .custom-radio .custom-control-label:before {
+    background: #EFEFEF!important;
+    border: 1px solid #CDCDCD !important;
+    top: 2px;
+}
+
+.custom-radio .custom-control-label {
+  cursor: pointer;
+}
+/*====== Radio button new design end ======*/
+
+
+.line-title:after {
+  background: transparent !important;
+}
+
+
+
+
+@media only screen and (max-width: 767px){
+}
+
+
+/* Added on 24/09/2020 */
+.link-hover a {
+  position: relative;
+  display: inline-block;
+  color: royalblue;
+  font-weight: 800;
+  text-decoration: none;
+  overflow: hidden;
+}
+.link-hover a:hover {
+  text-decoration: none;
+}
+.link-hover a:before {
+  position: absolute;
+  content: attr(data-content);
+  top: 0;
+  left: 0;
+  width: 0;
+  color: midnightblue;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 875ms ease;
+}
+.link-hover a:hover:before {
+  width: 100%;
+  text-decoration: none;
+}
+#userTable thead tr:nth-child(1) th,
+.largeTable thead tr:nth-child(1) th {
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+}
+#userTable tbody tr:nth-child(1) td,
+.largeTable tbody tr:nth-child(1) td {
+    position: sticky;
+    top: 43px;
+    z-index: 1;
+}
+.table .thead-dark th {
+    border: #29487d !important;
+}
+/* Added on 24/09/2020 */

@@ -1,0 +1,142 @@
+/*pagination styles*/
+
+ul.pagination li a {
+  font-size: 13px;
+  padding: 5px 10px;
+  line-height: 13px!important;
+}
+.table_hover2_pagi td{
+  color: #333!important;
+
+}
+.pagination li a {
+  color: black;
+}
+.col_b {
+  color: #405063;
+}
+.w_50 {
+  width: 50px;
+  min-width: 3vw;
+}
+
+.page-link {
+  border: 1px solid #29487d !important;
+  color: #333!important;
+}
+.paag td {
+  font-weight: bold!important;
+}
+.button-responsive-view{
+  padding-top: 6px;
+
+}
+a.pagi-input-field{
+width: 46px;
+height: 37px;
+
+}
+a.pagi-input-field input{
+color: #333!important;
+}
+/*br.mobile{
+display: none;
+}*/
+/*.pagination {
+    display: inline-block;
+   }*/
+.table_hover2 td {
+position: relative;
+padding-left: 6px !important;
+padding-right: 6px !important;
+font-size: 4mm !important;
+color: #405063 !important;
+}
+
+.page-link{
+border: 1px solid #29487d !important;
+color: #333!important;
+
+}
+.page-link:hover{
+
+background-color: transparent!important;
+}
+@media only screen and (max-width: 768px)  {
+.page-link{
+padding: 7px 11px!important;
+}
+
+}
+@media only screen and (max-width: 767px)  {
+.pagination-responsive > li {
+  float: left;
+  width: 20%;
+  margin-top: -1px;
+  text-align: center;
+}
+.pagination-responsive > li.li-w-m{
+   width: 10%!important;
+   /*padding-top: 20px!important;*/
+}
+.pagination-responsive > li.li-w-m a{
+padding-top: 10px!important;
+}
+.pagination-responsive > li > a{
+font-size: 14px!important;
+padding-top: 10px!important;
+height: 41px!important;
+}
+
+
+.bgcolr_order_inq{
+padding: 7px!important;
+}
+
+.button-responsive-view{
+padding: 11px!important;
+  padding-bottom: 0px!important;
+}
+.btn-m-view{
+width: 100%!important;margin-bottom: 10px;
+}
+
+.nav_mview{
+    margin-bottom: 15px!important;
+}
+.column_display_btn{
+width: 50%!important;
+}
+
+
+// .border_none_table td{
+//   border: 1px solid #29487d!important;
+//   padding: 4px;
+// }
+.pagi_border-_none_text_wrap{
+margin-top: -10px!important;
+}
+
+.mb-3_m{
+margin-bottom: 0rem!important;
+}
+
+.page-link{
+height: 27px!important;
+}
+
+}
+
+
+@media only screen and (min-width: 992px)  {
+
+.padd-0{
+  padding-left:0px!important;
+}
+
+a.pagi-input-field {
+  width: 46px;
+  height: 36px;
+}
+}
+/*pagination styles*/

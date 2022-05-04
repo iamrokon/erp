@@ -1,0 +1,35 @@
+.border-inner{
+   margin: 5px;
+     border: 1px solid #29487d;
+     float: left;
+}
+
+.box-wrap{
+border-right: 1px solid #29487d;
+height: 36px;
+/*padding: 6px;*/
+float: left;
+min-width: 70px;
+display: inline-block;
+}
+
+/*.box-wrap::after {
+    content: '';
+    border-left: 1px solid #29487d;
+    position: absolute;
+    height: 50%;
+    left: 0;
+    top: 25%;
+}
+*/
+.box-inner{
+   margin: 5px;
+    
+}
+.button-wrap{
+  margin: 5px;
+}
+.bg_b{
+background-color: #c2d6d6;
+    text-align: center;
+}

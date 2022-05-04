@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title></title>
+    <style type="text/css">
+      body {
+        font-family: "ipag", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+        font-size: 12px;
+        margin: 0px !important;
+        padding: 0px !important;
+        background: #fff;
+        line-height: normal !important;
+      }
+      .wrapper-content {
+          /*width: 795px;*/
+          margin: 0 auto;
+          background: white;
+          /*padding: 37.79px 37.79px 37.79px 56.69px;*/
+          /*padding: 22mm 25mm;*/
+          font-size: 10px;
+      }
+      .pdf-logo{
+        position: relative;
+        height: 135px;
+      }
+
+      .pdf-img-stamp{
+        position: absolute;
+        right: 0;
+        top: -33px;
+      }
+
+      .clearfix{
+        display: block;
+        content: "";
+        clear: both;
+      }
+
+      /*table thead tr td,
+      table tbody tr td{
+        border: none;
+        border-right: 1px solid #000;
+      }*/
+
+      table thead tr td{
+        text-align: center;
+      }
+
+      /*table thead tr td:last-child,
+      table tbody tr td:last-child{
+        border-right: 0;
+      }*/
+
+      .pdf-data-table tbody tr:nth-child(even) td{
+        background-color: #D9E1F1;
+        border-right: 1px solid #000;
+      }
+
+      .pdf-data-table tbody tr:nth-child(even) td:last-child{
+        border-right: none;
+      }
+      @font-face {
+            font-family: ipag;
+            font-style: normal;
+            font-weight: normal;
+            src: url("{{ storage_path ('fonts/YuGothRegular.ttf') }}") format('truetype');
+
+        }
+        @font-face {
+            font-family: ipag;
+            font-style: bold;
+            font-weight: bold;
+            src: url("{{ storage_path ('fonts/YuGothBold.ttf') }}") format('truetype');
+
+        }
+
+        @media print {
+          * {
+            background: transparent !important;
+            color: #000 !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            margin: 0;
+            padding: 0;
+            line-height: normal !important;
+            /* font-size: 8px !important; */
+          }
+
+          body {
+            padding: 0;
+          }
+        }
+
+      @page {
+        size: A4;
+        /* margin: 0; */
+      }
+
+      /* @media screen, print{
+            @page {
+                max-width: 100%;
+                max-height:100%;
+                position:fixed;
+            }
+        } */
+    </style>
+  </head>
+  <body>
+    <div class="wrapper-body">
+      <div class="wrapper-content">
+        <div style="width: 100%;">
+          <div style="width: 46%;float: left;margin-right: 4%;font-size: 13px;">
+            <div>541-0054</div>
+            <!-- @php
+            $str = $data[0]->office_address;
+            $part1 = "";
+            $part2 = "";
+            $res = explode('　',$str);
+            for($i=0;$i<count($res);$i++){
+                if($i<3){
+                    $part1 = $part1.$res[$i]." ";
+                }
+                if($i>3){
+                $part2 = $part2.$res[$i]." ";
+                }
+            }
+            @endphp -->
+            <div>大阪府 大阪市中央区 南本町&nbsp;</div>
+            <div>２丁目６－１２サンマリオンタワー１３階 &nbsp;</div>
+            <div>宇仁繊維株式会社</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;宇仁繊維</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;システム課 課長 良夢ちゃん</div>
+            <div>お客様コード 00508201001</div>
+          </div>
+          <div style="width: 50%;float: left;">
+            <div style="margin-top: 6px;margin-bottom:50px;font-size: 18px;text-decoration: underline;">
+                売上伝票
+              <!-- @if($data[0]->housoukubun == 1)
+                {{'売上伝票　兼　請求書'}}
+                @else
+                {{'売上伝票'}}
+                @endif -->
+            </div>
+            <!-- @if($data[0]->housoukubun != 1) -->
+            <div>
+              <div class="pdf-logo">
+                <img src="img/logo.jpg" height="53px">
+                <img class="pdf-img-stamp" src="img/stamp.png" width="116px">
+              </div>
+               <div class="clearfix"></div>
+            </div>
+            <!-- @endif -->
+
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div style="width: 100%;">
+          <div style="margin-left: 116mm;"><!-- margin-left: 116mm -->
+            <div>登録番号 T7120001091573</div>
+            <div>大阪本社 〒541-0048 大阪市中央区瓦町1-6-10</div>
+            <div style="margin-left:28px;">経理部 TEL 06-6228-1384 FAX 06-6228-1380</div>
+            <div>東京本社 〒103-0015 東京都中央区日本橋箱崎町4-3</div>
+            <div style="margin-left:28px;">経理部 TEL 03-6661-1210 FAX 03-5643-0909</div>
+          </div>
+        </div>
+        <div style="width: 100%;margin-top:5px;">
+          <div style="width: 36%;float: left;margin-right: 9%;">
+            <div style="border-bottom: 1px solid #000;">
+              <span style="padding-right: 29px;">伝票番号
+              </span><span>0950000121</span>
+            </div>
+            <div style="border-bottom: 1px solid #000;">
+              <span style="padding-right: 23px;">売上年月日</span><span>2020/11/04</span>
+            </div>
+            <div style="border-bottom: 1px solid #000;">
+              <span style="padding-right: 23px;">請求書番号</span><span></span>
+            </div>
+            <div style="border-bottom: 1px solid #000;">
+              <span style="padding-right: 11px;">弊社管理番号</span><span>0150000746</span>
+            </div>
+            <div style="border-bottom: 1px solid #000;">
+              <span style="padding-right: 11px;">貴社発注番号</span><span>備考備考備考</span>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+
+            <!-- @if($data[0]->housoukubun == 1) -->
+            <!-- <div style="width: 55%;float: left;text-align: right;margin-top: 30px; font-size: 9.5px;">
+             <div>
+               <span style="padding-right: 10px;">取引銀行 &nbsp;三井住友銀行 &nbsp; 御堂筋支店</span>
+               <span>当座6661280</span>
+             </div>
+             <div>
+               <span style="padding-right: 30px;">りそな銀行 &nbsp; 船場支店
+               </span>
+               <span>当座1274350</span>
+             </div>
+              <div>
+               <span>三菱UFJ銀行 &nbsp;船場中央支店&nbsp;</span>
+               <span>当座1126963</span>
+             </div>
+              <div>
+               <span style="padding-right: 30px;">みずほ銀行&nbsp;船場支店&nbsp;
+               </span><span>当座0035398</span>
+             </div>
+             <div class="clearfix"></div>
+           </div> -->
+            <!-- @endif -->
+
+          <div class="clearfix"></div>
+        </div>
+        <!-- content 1 -->
+        <div style="width: 100%;margin-top: 5px;">
+          <table class="pdf-data-table" style="border-spacing: 0px;width: 100%;border:1px solid #000;border-top: 0; border-bottom: 0;">
+            <thead style="background: #D9E1F1; width: 100%;">
+              <tr>
+                <td style="border-bottom:1px solid #000; border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 3%;">行</td>
+                <td style="border-bottom:1px solid #000; border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 8%;">区分</td>
+                <td style="border-bottom:1px solid #000; border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 39%;text-align: left;">商品コード<br/>商 品 名</td>
+                <td style="border-bottom:1px solid #000; border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 9%;">数 量<br/>単 位</td>
+                <td style="border-bottom:1px solid #000; border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 10%;">単 価</td>
+                <td style="border-bottom:1px solid #000; border-right: 1px solid #000;border-top:1px solid #000;padding: 0;width: 11%;">金 額</td>
+                <td style="border-bottom:1px solid #000; border-top:1px solid #000;padding: 0;width: 15%;">摘 要</td>
+              </tr>
+            </thead>
+            <tbody>
+                <!-- @php
+                $countLineNumber = 0;
+                @endphp
+
+                @foreach($data as $key=>$val)
+                @php
+                $countLineNumber++;
+                @endphp -->
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                 <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">014</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">通常</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">00003 （内訳保守）Ａｕｔｏジョブ名人 開発版 １年Ｌ ０１．０．０1 240,000 240</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">1</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; border-right: 1px solid #000;padding: 0;word-wrap: break-word;">240,000</td>
+                  <td style="border-bottom:1px solid #000; padding: 0;word-wrap: break-word;"></td>
+                </tr>
+
+                <!-- @endforeach -->
+
+            </tbody>
+          </table>
+          <!-- <div style="page-break-after: always;"></div> -->
+          <div style="page-break-inside: avoid; margin-top: -1px;">
+          <!-- <div style="page-break-after: always;"> -->
+            <table style="border-spacing: 0px;width: 100%;border:1px solid #000;">
+              <tbody>
+                <tr>
+                  <td rowspan="4" style="border-right: 1px solid #000;width: 65%;">
+
+                    <!-- <div style="display: flex; align-items: center; margin-right: 10px;">
+                      <span style="width: 30%;">摘要= Data Something here</span>
+
+                      <div style="display: flex; justify-content: flex-end; width: 100%;">
+                        <span style="margin-right: 5px; font-size: 18px;">□</span>
+                        <span style="font-size: 18px;">◎</span>
+                      </div>
+                    </div> -->
+
+                    <div class="" style="position: relative; right: 0;  top: 0px; margin-right: 5px; font-size: 18px;">
+                      <div style="float: right;">
+                        <span style="margin-right: 0px;">□</span>
+                        <span>◎</span>
+                      </div>
+                    </div>
+
+                    <div class="" style="margin-right: 10px;  width: 100%;">
+                      <div class="" style="display: inline-block; width: 70%;">
+                        摘要= <br />
+                        めます今から始めます今 &nbsp;<br />
+                        （未使用）<br />
+                        は軽減税率である事を示します&nbsp;<br />
+                      </div>
+                      <!-- <div class="" style="display: inline-block; float: right; width: 28%; margin-right: 5px; font-size: 18px;">
+                        <div style="display: flex; justify-content: flex-end; width: 100%;">
+                          <span style="margin-left: 25px; margin-right: 5px;">□</span>
+                          <span>◎</span>
+                        </div>
+                      </div> -->
+                    </div>
+
+                    <!-- @if($data[0]->housoukubun == 1)
+                    {{"上記の通りご請求申し上げます。"}} <br/>
+                    {{"なお御不審の点がございましたら早速ご連絡頂きたく存じます。"}} <br/>
+                    {{"当請求書と行き違いにお支払いを頂きました際は悪しからずご了承下さい。"}}
+                    @endif -->
+                  </td>
+                  <td style="background: #D9E1F1;border-right: 1px solid #000;width: 10%;">合計（税込）</td>
+                  <td style="background: #D9E1F1;border-right: 1px solid #000;width: 10%;">9,636,000</td>
+                  <td style="width: 14%;"></td>
+                </tr>
+                <tr>
+                  <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;">合 計 <br/>消 費 税</td>
+                  <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;">8,760,000<br/>876,000</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;">1 0 % 対 象<br/>消 費 税</td>
+                  <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;">8,760,000<br/>876,000</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;">8 % 対 象<br/>消 費 税</td>
+                  <td style="background: #D9E1F1;border-top: 1px solid #000;border-right: 1px solid #000;"></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

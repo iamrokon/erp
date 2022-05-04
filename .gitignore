@@ -1,0 +1,12 @@
+/nbproject/private/
+.env
+/vendor/
+.idea
+/vendor.zip
+/backup/
+/public/log/
+/public/logfile/
+/public/uploads/
+/node_modules/
+package-lock.json
+.vscode
